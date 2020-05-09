@@ -1,6 +1,6 @@
 {
   "type": "module",
   "scripts": {
-    "program" : "node index.mjs"
+    "program": "node index.mjs"
   }
 }
