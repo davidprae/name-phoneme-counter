@@ -22,7 +22,8 @@ function getBabyNameWithVoicedPhonemesCount(babyName) {
 function createGetVoicedPhonemeCount(voicedPhonemes) {
   return phonemes => {
     return phonemes.reduce((accumulator, currentValue) => {
-      if(voicedPhonemes.includes(currentValue)) {
+      const updatedValue = currentValue.slice(0, 2); //Remove possible "stress" markings (stress is indicated by a number in the 2 position (0-indexed)
+      if(voicedPhonemes.includes(updatedValue)) {
         return accumulator + 1;
       }
       return accumulator;
