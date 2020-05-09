@@ -1,0 +1,140 @@
+const rawBabyNameText = `
+ADA\tEY D AH
+ADABELLE\tAE D AH B AH L
+ADALACE\tAE D AH L AH S
+AISLEY\tAY L IY
+ALANA\tAA L AE N AH
+ALIA\tEY L Y AH
+ALICE\tAE L IH S
+AMALIA\tAH M AA L Y AH
+AMELIA\tAH M IY L Y AH
+ANASTASIA\tAE N AH S T EY ZH AH
+ANNALISA\tAE N AE L AH S AH
+ANTONIA\tAE N T OW N IY AH
+ARIA\tAA R IY AH
+ASTRID\tAE S T R IH D
+AUGUSTA\tAH G AH S T AH
+AURELIA\tAH R IY L Y AH
+BAILEY\tB EY L IY
+BAXTER\tB AE K S T ER
+BERKLEY\tB ER K L IY
+BERNADETTE\tB ER N AH D EH T
+BEVERLY\tB EH V ER L IY
+BEXLEY\tB EH K S L IY
+BLOOM\tB L UW M
+BRIDGETTE\tB R IH JH IH T
+BRIDGETTE(2)\tB R IH JH IY T
+BRIJIT\tB R IH JH AH T
+CAMILLA\tK AH M IH L AH
+CAMILLE\tK AH M IY L
+CELESTE\tS AH L EH S T
+CHANDLER\tCH AE N D L ER
+CLARK\tK L AA R K
+CLAUDIA\tK L AO D IY AH
+DAPHNE\tD AE F N IY
+DEBTINA\tD IH B T IH N AH
+DELILAH\tD AH L AY L AH
+DELILAH(2)\tD IH L AY L AH
+ELAINE\tIH L EY N
+ELAINE(2)\tAH L EY N
+ELAINE(3)\tIY L EY N
+ELIZADAE\tAH L IH Z AH D IY
+EVELYN\tEH V AH L AH N
+EVELYN(2)\tEH V AH L IH N
+FIONA\tF IY OW N AH
+FRANCIS\tF R AE N S AH S
+FRANCIS(2)\tF R AE N S IH S
+GENEVIEVE\tJH EH N AH V IY V
+HARMONY\tHH AA R M AH N IY
+HARPER\tHH AA R P ER
+HARRIETT\tHH AE R IY T
+HAVOC\tHH AE V AH K
+HELENA\tHH EH L AH N AH
+ILA\tIY L AH
+IRA\tAY R AH
+IRA(2)\tAY AA R EY
+IRENE\tAY R IY N
+IRIS\tAY R AH S
+IRIS(2)\tAY R IH S
+ISABELLE\tIH Z AH B EH L
+JANET\tJH AE N AH T
+JANET(2)\tJH AE N IH T
+JANIE\tJH EY N IY
+JANINE\tJH AH N IY N
+JESALYN\tJH EH S AH L AH N
+JOPLIN\tJH AA P L IH N
+JOYCE\tJH OY S
+JULIA\tJH UW L Y AH
+JUNIPER\tJH UW N AH P ER
+KAISLEY\tK EY Z L IY
+KASLYN\tK AE Z L AH N
+KRYSLYN\tK R IH Z L AH N
+KRYSTIAN\tK R IH S AH N
+LIA\tL IY AH
+LILIANE\tL IH L IY AE N
+LILIANE(2)\tL IH L IY AH N
+LINA\tL IY N AH
+LIVIA\tL IH V IY AH
+LOVE\tL AH V
+LUCIA\tL UW SH AH
+LUCINA\tL UW S AH N AH
+LYDIA\tL IH D IY AH
+MADELINE\tM AE D AH L IH N
+MAREN\tM EH R AH N
+MAREN\tM EH R AH N
+MARGOT\tM AA R G OW
+MARIAN\tM AA R IY AH N
+MARIN\tM EH R IH N
+MATILDA\tM AH T IH L D AH
+MAYA\tM AY AH
+MELANIE\tM EH L AH N IY
+MELLISA\tM EH L AH S AH
+MELODY\tM EH L AH D IY
+MELODY\tM EH L AH D IY
+MIA\tM IY AH
+MONICA\tM AA N IH K AH
+NADINE\tN AH D IY N
+NAOMI\tN EY OW M IY
+NIA\tN AY AH
+OCTAVIA\tAA K T EY V IY AH
+PAISLEY\tP EY Z L IY
+PEARL\tP ER L
+PENELOPE\tP AH N EH L AH P IY
+PHOEBE\tF IY B IY
+ROSE\tR OW Z
+ROSEMARY\tR OW Z M EH R IY
+RUTH\tR UW TH
+SABINA\tS AH B IY N AH
+SABRINA\tS AH B R IY N AH
+SABRINA\tS AH B R IY N AH
+SKYLAR\tS K AY L AH R
+SLAY\tS L EY
+SYLVIA\tS IH L V IY AH
+VANA\tV AE N AH
+`;
+
+function getFilteredBabyNameEntries(babyNameEntries) {
+  return babyNameEntries.filter(babyNameEntry => babyNameEntry);
+}
+
+function getCleanBabyNamesEntries(rawBabyNameText) {
+  const babyNameEntries = rawBabyNameText.split('\n');
+  const filteredBabyNameEntries = getFilteredBabyNameEntries(babyNameEntries);
+  return filteredBabyNameEntries.map(babyNameEntry => {
+    return getCleanBabyNameEntry(babyNameEntry);
+  });
+}
+
+function getCleanBabyNameEntry(babyNameEntry) {
+  const babyEntryPiecesArray = babyNameEntry.split('\t');
+  const name = babyEntryPiecesArray[0];
+  const phonemes = babyEntryPiecesArray[1] && babyEntryPiecesArray[1].split(' ');
+
+  return name ? {
+    name,
+    phonemes
+  } : null;
+}
+
+
+export default () => getCleanBabyNamesEntries(rawBabyNameText);
