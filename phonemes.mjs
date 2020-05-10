@@ -7,7 +7,7 @@ const voicedConsonants = [
   'M',
   'N',
   'NG',
-  'NX', // dupe of NG
+  'NX',
   'R',
   'ZH',
   'DH',
@@ -17,8 +17,27 @@ const voicedConsonants = [
   'Z'
 ];
 
+export const specialConsonants = [
+  'S', //s
+  'Z', //z
+  'F', //f
+  'V', //v
+  'TH', //th
+  'CH', //ch
+  'ZH', //zh
+  'JH' //dzh
+];
 
-const vowels = [
+export const stopConsonants = [
+  'P', //p
+  'B', //b
+  'T', //t
+  'D', //d
+  'K', //k
+  'G' //g
+];
+
+export const vowels = [
   'AA',
   'AE',
   'AH',
@@ -38,6 +57,11 @@ const vowels = [
   'UH',
   'UW',
   'UX'
+];
+
+export const schwaVowels = [
+  'AA',
+  'AH'
 ];
 
 
