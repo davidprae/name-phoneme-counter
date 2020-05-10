@@ -2,5 +2,8 @@
   "type": "module",
   "scripts": {
     "program": "node index.mjs"
+  },
+  "dependencies": {
+    "us-baby-names": "^1.0.0"
   }
 }
