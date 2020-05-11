@@ -11,7 +11,7 @@ function getBabyNamesWithPopularity(babyNames) {
     const params = {
       name: babyName.name,
       sex: 'F',
-      year: 2016
+      year: 2017
     };
     return usbabynames.get(params)
       .then(data => {
