@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import getBabyNames from "./babynames.mjs";
 import usbabynames from "usbabynames";
 import getBabyNamesWithStats from './utils.mjs';
@@ -26,6 +27,15 @@ getBabyNamesWithPopularity(babyNamesWithStats)
   .then(data => {
     const presentableBabyNames = getPresentableBabyNames(data);
     console.log(presentableBabyNames);
+    // const babyNamesSortedByMasculinityScore = _.sortBy(presentableBabyNames, (bn) => bn.masculinityScore);
+    // const babyNamesSortedByRank = _.sortBy(presentableBabyNames, (bn) => bn.usageStats.rank);
+    // babyNamesSortedByMasculinityScore.map(bn => {
+    //   console.log(bn.name, bn.masculinityScore);
+    // })
+    // babyNamesSortedByRank.map(bn => {
+    //   console.log(bn.name, bn.usageStats.rank);
+    // })
+
   })
   .catch(error => console.warn('getBabyNamesWithPopularity error', error));
 
