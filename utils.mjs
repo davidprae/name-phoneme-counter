@@ -10,6 +10,7 @@ function getBabyNamesWithStats(babyNames) {
   updatedBabyNames = getBabyNamesWithEndsWithSpecialConsonant(updatedBabyNames);
   updatedBabyNames = getBabyNamesWithEndsWithStopConsonant(updatedBabyNames);
   updatedBabyNames = getBabyNamesWithBeginsWithVoicedPhoneme(updatedBabyNames);
+  updatedBabyNames = getBabyNamesWithSyllableCount(updatedBabyNames);
   updatedBabyNames = getBabyNamesWithMasculinityScore(updatedBabyNames);
   return updatedBabyNames;
 }
@@ -27,22 +28,63 @@ function getBabyNameWithMasculinityScore(babyName) {
 }
 function getMasculinityScore(babyName) {
   let masculinityScore = 0;
-  if(babyName.endsInVowel) {
+
+  //From
+  //https://www.mentalfloss.com/article/57175/why-have-baby-names-become-increasingly-female-sounding
+  // If the accent is on the second or later syllable
+  if(!babyName.isStressOnFirstSyllable) {
+    masculinityScore = masculinityScore + 2;
+  }
+  // If the accent is on the first of three or more syllables
+  if(babyName.isStressOnFirstSyllable && babyName.syllableCount > 2) {
     masculinityScore = masculinityScore + 1;
   }
+  //If the accent is on the first of two syllables and the name has six or more phonemes.
+  if(babyName.isStressOnFirstSyllable && babyName.syllableCount === 2 && babyName.phonemesCount > 5) {
+    masculinityScore = masculinityScore + 1;
+  }
+  //If the name has one syllable
+  if(babyName.syllableCount === 1) {
+    masculinityScore = masculinityScore - 1;
+  }
+  //If the last phoneme is an unstressed schwa-like (‘uh’ or ‘ah’) sound
   if(babyName.endsInUnstressedSchwa) {
     masculinityScore = masculinityScore + 1;
   }
-  if(babyName.beginsWithVoicedPhoneme) {
-    masculinityScore = masculinityScore - 2;
+  //If the last phoneme ends in vowel
+  if(babyName.endsInVowel) {
+    masculinityScore = masculinityScore + 1;
   }
-  if(babyName.endsWithStopConsonant) {
-    masculinityScore = masculinityScore - 2;
-  }
+  //If the last phoneme is a s, z, f, v, th, ch, zh, or dzh
   if(babyName.endsWithSpecialConsonant) {
     masculinityScore = masculinityScore - 1;
   }
+  //If the last phoneme is a stop consonant
+  if(babyName.endsWithStopConsonant) {
+    masculinityScore = masculinityScore - 2;
+  }
+  //Not on chart but adding this from other research
+  if(babyName.beginsWithVoicedPhoneme) {
+    masculinityScore = masculinityScore - 1;
+  }
   return masculinityScore;
+}
+
+
+
+//SyllableCount
+function getBabyNamesWithSyllableCount(babyNames) {
+  return babyNames.map(getBabyNameWithSyllableCount);
+}
+function getBabyNameWithSyllableCount(babyName) {
+  const syllableCount = getSyllableCount(babyName.syllables);
+  return {
+    ...babyName,
+    syllableCount
+  }
+}
+function getSyllableCount(syllables) {
+  return syllables.length; // There will only be a char at 2 if the phoneme includes a stress marking
 }
 
 

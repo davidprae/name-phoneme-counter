@@ -1,3 +1,4 @@
+import _ from 'lodash';
 const rawBabyNameText = `
 Ada|EY1 D AH0
 Alana|AA0 L AE1 N AH0
@@ -56,7 +57,6 @@ Monica|M AA1 N IH0 K AH0
 Nadine|N AH0 D IY1 N
 Naomi|N EY0 OW1 M IY0
 Octavia|AA0 K T EY1 V IY0 AH0
-Pearl|P ER1 L
 Rose|R OW1 Z
 Rosemary|R OW1 Z M EH2 R IY0
 Ruth|R UW1 TH
@@ -66,6 +66,74 @@ Skylar|S K AY1 L AH0 R
 Slay|S L EY1
 Vana|V AE1 N AH0
 `;
+
+const babyNames = [
+  {"name":"Ada","phonemes2":[{"phoneme":"EY","stress":1},{"phoneme":"D","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["EY"],["D","AH"]]},
+  {"name":"Alana","phonemes2":[{"phoneme":"AA","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["AA"],["L","AE"],["N","AH"]]},
+  {"name":"Alice","phonemes2":[{"phoneme":"AE","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"S","stress":-1}],"syllables":[["AE"],["L","IH","S"]]},
+  {"name":"Amalia","phonemes2":[{"phoneme":"AH","stress":0},{"phoneme":"M","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["AH"],["M","AA","L"],["Y","AH"]]},
+  {"name":"Amelia","phonemes2":[{"phoneme":"AH","stress":0},{"phoneme":"M","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["AH"],["M","IY","L"],["Y","AH"]]},
+  {"name":"Anastasia","phonemes2":[{"phoneme":"AE","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"S","stress":-1},{"phoneme":"T","stress":-1},{"phoneme":"EY","stress":1},{"phoneme":"ZH","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["AE"],["N","AH","S"],["T","EY"],["ZH","AH"]]},
+  {"name":"Annalisa","phonemes2":[{"phoneme":"AE","stress":2},{"phoneme":"N","stress":-1},{"phoneme":"AE","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["AE"],["N","AE"],["L","IY"],["S","AH"]]},
+  {"name":"Antonia","phonemes2":[{"phoneme":"AE","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"T","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"AH","stress":0}],"syllables":[["AE","N"],["T","OW"],["N","IY"],["AH"]]},
+  {"name":"Astrid","phonemes2":[{"phoneme":"AE","stress":1},{"phoneme":"S","stress":-1},{"phoneme":"T","stress":-1},{"phoneme":"R","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"D","stress":-1}],"syllables":[["AE","S","T"],["R","IH","D"]]},
+  {"name":"Baxter","phonemes2":[{"phoneme":"B","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"K","stress":-1},{"phoneme":"S","stress":-1},{"phoneme":"T","stress":-1},{"phoneme":"ER","stress":0}],"syllables":[["B","AE","K","S"],["T","ER"]]},
+  {"name":"Berkley","phonemes2":[{"phoneme":"B","stress":-1},{"phoneme":"ER","stress":1},{"phoneme":"K","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["B","ER","K"],["L","IY"]]},
+  {"name":"Beverly","phonemes2":[{"phoneme":"B","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"V","stress":-1},{"phoneme":"ER","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["B","EH"],["V","ER"],["L","IY"]]},
+  {"name":"Bexley","phonemes2":[{"phoneme":"B","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"K","stress":-1},{"phoneme":"S","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["B","EH","K","S"],["L","IY"]]},
+  {"name":"Bloom","phonemes2":[{"phoneme":"B","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"UW","stress":1},{"phoneme":"M","stress":-1}],"syllables":[["B","L","UW","M"]]},
+  {"name":"Camilla","phonemes2":[{"phoneme":"K","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"M","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["K","AH"],["M","IH"],["L","AH"]]},
+  {"name":"Chandler","phonemes2":[{"phoneme":"CH","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"D","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"ER","stress":0}],"syllables":[["CH","AE","N","D"],["L","ER"]]},
+  {"name":"Clark","phonemes2":[{"phoneme":"K","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"K","stress":-1}],"syllables":[["K","L","AA","R","K"]]},
+  {"name":"Delilah","phonemes2":[{"phoneme":"D","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"AY","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["D","AH"],["L","AY"],["L","AH"]]},
+  {"name":"Evelyn","phonemes2":[{"phoneme":"EH","stress":1},{"phoneme":"V","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["EH"],["V","AH"],["L","AH","N"]]},
+  {"name":"Fiona","phonemes2":[{"phoneme":"F","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"OW","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["F","IY"],["OW"],["N","AH"]]},
+  {"name":"Francis","phonemes2":[{"phoneme":"F","stress":-1},{"phoneme":"R","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"S","stress":-1}],"syllables":[["F","R","AE","N"],["S","AH","S"]]},
+  {"name":"Harmony","phonemes2":[{"phoneme":"HH","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"M","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["HH","AA","R"],["M","AH"],["N","IY"]]},
+  {"name":"Harper","phonemes2":[{"phoneme":"HH","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"P","stress":-1},{"phoneme":"ER","stress":0}],"syllables":[["HH","AA","R"],["P","ER"]]},
+  {"name":"Harriett","phonemes2":[{"phoneme":"HH","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"AH","stress":0},{"phoneme":"T","stress":-1}],"syllables":[["HH","EH"],["R","IY"],["AH","T"]]},
+  {"name":"Havoc","phonemes2":[{"phoneme":"HH","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"V","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"K","stress":-1}],"syllables":[["HH","AE"],["V","AH","K"]]},
+  {"name":"Helena","phonemes2":[{"phoneme":"HH","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["HH","EH"],["L","AH"],["N","AH"]]},
+  {"name":"Ila","phonemes2":[{"phoneme":"IY","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["IY"],["L","AH"]]},
+  {"name":"Ira","phonemes2":[{"phoneme":"AY","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["AY"],["R","AH"]]},
+  {"name":"Irene","phonemes2":[{"phoneme":"AY","stress":0},{"phoneme":"R","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1}],"syllables":[["AY"],["R","IY","N"]]},
+  {"name":"Iris","phonemes2":[{"phoneme":"AY","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"S","stress":-1}],"syllables":[["AY"],["R","AH","S"]]},
+  {"name":"Isabelle","phonemes2":[{"phoneme":"IH","stress":1},{"phoneme":"Z","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"B","stress":-1},{"phoneme":"EH","stress":2},{"phoneme":"L","stress":-1}],"syllables":[["IH"],["Z","AH"],["B","EH","L"]]},
+  {"name":"Janet","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"T","stress":-1}],"syllables":[["JH","AE"],["N","AH","T"]]},
+  {"name":"Janie","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"EY","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["JH","EY"],["N","IY"]]},
+  {"name":"Janine","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1}],"syllables":[["JH","AH"],["N","IY","N"]]},
+  {"name":"Joplin","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"P","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["JH","AA","P"],["L","IH","N"]]},
+  {"name":"Joyce","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"OY","stress":1},{"phoneme":"S","stress":-1}],"syllables":[["JH","OY","S"]]},
+  {"name":"Julia","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"UW","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["JH","UW","L"],["Y","AH"]]},
+  {"name":"Juniper","phonemes2":[{"phoneme":"JH","stress":-1},{"phoneme":"UW","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"P","stress":-1},{"phoneme":"ER","stress":0}],"syllables":[["JH","UW"],["N","AH"],["P","ER"]]},
+  {"name":"Lia","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"AH","stress":0}],"syllables":[["L","IY"],["AH"]]},
+  {"name":"Lina","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["L","IY"],["N","AH"]]},
+  {"name":"Livia","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"V","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"AH","stress":0}],"syllables":[["L","IH"],["V","IY"],["AH"]]},
+  {"name":"Love","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":1},{"phoneme":"V","stress":-1}],"syllables":[["L","AH","V"]]},
+  {"name":"Lucia","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"UW","stress":1},{"phoneme":"SH","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["L","UW"],["SH","AH"]]},
+  {"name":"Lucina","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"UW","stress":0},{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["L","UW"],["S","AH"],["N","AH"]]},
+  {"name":"Madeline","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"D","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["M","AE"],["D","AH"],["L","IH","N"]]},
+  {"name":"Maren","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["M","AE"],["R","AH","N"]]},
+  {"name":"Margot","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"G","stress":-1},{"phoneme":"OW","stress":0}],"syllables":[["M","AA","R"],["G","OW"]]},
+  {"name":"Marian","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["M","AA"],["R","IY"],["AH","N"]]},
+  {"name":"Marin","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["M","EH"],["R","IH","N"]]},
+  {"name":"Matilda","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"T","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"D","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["M","AH"],["T","IH","L"],["D","AH"]]},
+  {"name":"Melanie","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["M","EH"],["L","AH"],["N","IY"]]},
+  {"name":"Melissa","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["M","AH"],["L","IH"],["S","AH"]]},
+  {"name":"Melody","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"D","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["M","EH"],["L","AH"],["D","IY"]]},
+  {"name":"Monica","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"K","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["M","AA"],["N","IH"],["K","AH"]]},
+  {"name":"Nadine","phonemes2":[{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"D","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1}],"syllables":[["N","AH"],["D","IY","N"]]},
+  {"name":"Naomi","phonemes2":[{"phoneme":"N","stress":-1},{"phoneme":"EY","stress":0},{"phoneme":"OW","stress":1},{"phoneme":"M","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["N","EY"],["OW"],["M","IY"]]},
+  {"name":"Octavia","phonemes2":[{"phoneme":"AA","stress":0},{"phoneme":"K","stress":-1},{"phoneme":"T","stress":-1},{"phoneme":"EY","stress":1},{"phoneme":"V","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"AH","stress":0}],"syllables":[["AA","K"],["T","EY"],["V","IY"],["AH"]]},
+  {"name":"Rose","phonemes2":[{"phoneme":"R","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"Z","stress":-1}],"syllables":[["R","OW","Z"]]},
+  {"name":"Rosemary","phonemes2":[{"phoneme":"R","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"Z","stress":-1},{"phoneme":"M","stress":-1},{"phoneme":"EH","stress":2},{"phoneme":"R","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["R","OW","Z"],["M","EH"],["R","IY"]]},
+  {"name":"Ruth","phonemes2":[{"phoneme":"R","stress":-1},{"phoneme":"UW","stress":1},{"phoneme":"TH","stress":-1}],"syllables":[["R","UW","TH"]]},
+  {"name":"Sabina","phonemes2":[{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"B","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["S","AH"],["B","IY"],["N","AH"]]},
+  {"name":"Sabrina","phonemes2":[{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"B","stress":-1},{"phoneme":"R","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["S","AH","B"],["R","IY"],["N","AH"]]},
+  {"name":"Skylar","phonemes2":[{"phoneme":"S","stress":-1},{"phoneme":"K","stress":-1},{"phoneme":"AY","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"R","stress":-1}],"syllables":[["S","K","AY"],["L","AH","R"]]},
+  {"name":"Slay","phonemes2":[{"phoneme":"S","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"EY","stress":1}],"syllables":[["S","L","EY"]]},
+  {"name":"Vana","phonemes2":[{"phoneme":"V","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["V","AE"],["N","AH"]]},
+];
 
 function getFilteredBabyNameEntries(babyNameEntries) {
   return babyNameEntries.filter((babyNameEntry) => babyNameEntry);
@@ -84,13 +152,34 @@ function getCleanBabyNameEntry(babyNameEntry) {
   const name = babyEntryPiecesArray[0];
   const phonemes =
     babyEntryPiecesArray[1] && babyEntryPiecesArray[1].split(" ");
+  const phonemesCount = phonemes.length;
+
+  const nameInBabyName = _.find(babyNames, {name:name});
+  const phonemes2 = nameInBabyName.phonemes2;
+  const syllables = nameInBabyName.syllables;
+
+  const isStressOnFirstSyllable = getIsStressOnFirstSyllable(phonemes2, syllables);
 
   return name
     ? {
         name,
         phonemes,
+        phonemesCount,
+        phonemes2,
+        syllables,
+        isStressOnFirstSyllable
       }
     : null;
+}
+
+function getIsStressOnFirstSyllable(phonemes2, syllables) {
+  const firstSyllableLength = syllables[0].length;
+  let isStressOnFirstSyllable = false;
+  for(let i = 0; i < firstSyllableLength; i++) {
+    isStressOnFirstSyllable = phonemes2[i].stress === 1;
+    if(isStressOnFirstSyllable) break;
+  }
+  return isStressOnFirstSyllable;
 }
 
 export default () => getCleanBabyNamesEntries(rawBabyNameText);
