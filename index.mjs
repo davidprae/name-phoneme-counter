@@ -17,4 +17,16 @@ const babyNamesWithPopularity = babyNamesWithStats.map((bn) => {
   return { ...bn, popularity: popularity };
 });
 
-console.log(babyNamesWithPopularity);
+function getPresentableBabyNames(babyNames) {
+  return babyNames.map(babyName => {
+    return {
+      name: babyName.name,
+      masculinityScore: babyName.masculinityScore,
+      popularity: babyName.popularity || 'No data'
+    }
+  })
+}
+
+const presentableBabyNames = getPresentableBabyNames(babyNamesWithPopularity);
+
+console.log(presentableBabyNames);

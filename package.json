@@ -4,6 +4,7 @@
     "program": "node index.mjs"
   },
   "dependencies": {
+    "phonemenon": "^1.3.1",
     "us-baby-names": "^1.0.0"
   }
 }
