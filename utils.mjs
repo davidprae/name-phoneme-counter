@@ -3,8 +3,6 @@ import voicedPhonemes, {schwaVowels, vowels, specialConsonants, stopConsonants} 
 
 function getBabyNamesWithStats(babyNames) {
   let updatedBabyNames = babyNames;
-  updatedBabyNames = getBabyNamesWithVoicedPhonemesCount(updatedBabyNames);
-  updatedBabyNames = getBabyNamesWithStressMap(updatedBabyNames);
   updatedBabyNames = getBabyNamesWithEndsInUnstressedSchwa(updatedBabyNames);
   updatedBabyNames = getBabyNamesWithEndsWithVowel(updatedBabyNames);
   updatedBabyNames = getBabyNamesWithEndsWithSpecialConsonant(updatedBabyNames);
@@ -88,51 +86,6 @@ function getSyllableCount(syllables) {
 }
 
 
-//VoicedPhonemesCount
-function getBabyNamesWithVoicedPhonemesCount(babyNames) {
-  return babyNames.map(getBabyNameWithVoicedPhonemesCount);
-}
-function getBabyNameWithVoicedPhonemesCount(babyName) {
-  const phonemes = babyName.phonemes;
-  const totalPhonemeCount = phonemes.length;
-  const voicedPhonemeCount = getVoicedPhonemeCount(phonemes);
-  const voicelessPhonemeCount = totalPhonemeCount - voicedPhonemeCount;
-  return {
-    ...babyName,
-    voicedPhonemeCount,
-    voicelessPhonemeCount
-  }
-}
-function createGetVoicedPhonemeCount(voicedPhonemes) {
-  return phonemes => {
-    return phonemes.reduce((accumulator, currentValue) => {
-      const updatedValue = currentValue.slice(0, 2); //Remove possible "stress" markings (stress is indicated by a number in the 2 position (0-indexed)
-      if(voicedPhonemes.includes(updatedValue)) {
-        return accumulator + 1;
-      }
-      return accumulator;
-    }, 0)
-  }
-}
-const getVoicedPhonemeCount = createGetVoicedPhonemeCount(voicedPhonemes);
-
-
-//StressMap
-function getBabyNamesWithStressMap(babyNames) {
-  return babyNames.map(getBabyNameWithStressMap);
-}
-function getBabyNameWithStressMap(babyName) {
-  const stressMap = getStressMapFromPhonemes(babyName.phonemes);
-  return {
-    ...babyName,
-    stressMap
-  }
-}
-function getStressMapFromPhonemes(phonemes) {
-  return phonemes.map(phoneme => phoneme.charAt(2) || '_'); // There will only be a char at 2 if the phoneme includes a stress marking
-}
-
-
 //EndsInUnstressedSchwa
 function getBabyNamesWithEndsInUnstressedSchwa(babyNames) {
   return babyNames.map(getBabyNameWithEndsInUnstressedSchwa);
@@ -145,10 +98,10 @@ function getBabyNameWithEndsInUnstressedSchwa(babyName) {
   }
 }
 function getEndsInUnstressedSchwa(phonemes) {
-  const endingPhoneme = phonemes[phonemes.length - 1];
-  const isEndingPhonemeStressed = endingPhoneme.slice(2, 3) === '1'; // Remove stress marker
-  const endingPhonemeWithoutStressMark = endingPhoneme.slice(0, 2); // Remove stress marker
-  return schwaVowels.includes(endingPhonemeWithoutStressMark) && !isEndingPhonemeStressed;
+  const endingPhoneme = getEndingPhoneme(phonemes);
+  const endingPhonemeStress = getEndingPhonemeStress(phonemes);
+  const isEndingPhonemeStressed = endingPhonemeStress === 1;
+  return schwaVowels.includes(endingPhoneme) && !isEndingPhonemeStressed;
 }
 
 //BeginsWithVoicedPhoneme
@@ -163,9 +116,8 @@ function getBabyNameWithBeginsWithVoicedPhoneme(babyName) {
   }
 }
 function getBeginsWithVoicedPhoneme(phonemes) {
-  const beginningPhoneme = phonemes[0];
-  const beginningPhonemeWithoutStressMark = beginningPhoneme.slice(0, 2); // Remove stress marker
-  return voicedPhonemes.includes(beginningPhonemeWithoutStressMark);
+  const beginningPhoneme = getBeginningPhoneme(phonemes);
+  return voicedPhonemes.includes(beginningPhoneme);
 }
 
 //EndsWithVowel
@@ -180,9 +132,8 @@ function getBabyNameWithEndsWithVowel(babyName) {
   }
 }
 function getEndsWithVowel(phonemes) {
-  const endingPhoneme = phonemes[phonemes.length - 1];
-  const endingPhonemeWithoutStressMark = endingPhoneme.slice(0, 2); // Remove stress marker
-  return vowels.includes(endingPhonemeWithoutStressMark);
+  const endingPhoneme = getEndingPhoneme(phonemes);
+  return vowels.includes(endingPhoneme);
 }
 
 //EndsWithSpecialConsonant
@@ -197,7 +148,7 @@ function getBabyNameWithEndsWithSpecialConsonant(babyName) {
   }
 }
 function getEndsWithSpecialConsonant(phonemes) {
-  const endingPhoneme = phonemes[phonemes.length - 1];
+  const endingPhoneme = getEndingPhoneme(phonemes);
   return specialConsonants.includes(endingPhoneme);
 }
 
@@ -213,9 +164,20 @@ function getBabyNameWithEndsWithStopConsonant(babyName) {
   }
 }
 function getEndsWithStopConsonant(phonemes) {
-  const endingPhoneme = phonemes[phonemes.length - 1];
+  const endingPhoneme = getEndingPhoneme(phonemes);
   return stopConsonants.includes(endingPhoneme);
 }
 
+
+function getEndingPhoneme(phonemes) {
+  return phonemes[phonemes.length - 1].phoneme;
+}
+function getEndingPhonemeStress(phonemes) {
+  return phonemes[phonemes.length - 1].stress;
+}
+
+function getBeginningPhoneme(phonemes) {
+  return phonemes[0].phoneme;
+}
 
 export default getBabyNamesWithStats;
