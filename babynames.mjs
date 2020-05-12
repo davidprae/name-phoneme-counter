@@ -98,6 +98,20 @@ Skylar|S K AY1 L AH0 R
 Slay|S L EY1
 Sylvia|S IH1 L V IY0 AH0
 Vana|V AE1 N AH0
+Helen|HH EH1 L AH0 N
+Leona|L IY1 OW0 N AH0
+Nancy|N AE1 N S IY0
+Carol|K AE1 R AH0 L
+Carole|K AE1 R AH0 L
+Mary|M EH1 R IY0
+Olive|AA1 L AH0 V
+Dorothea|D AO2 R AH0 TH IY1 AH0
+Rebecca|R AH0 B EH1 K AH0
+Frances|F R AE1 N S IH0 S
+Ann|AE1 N
+Marjorie|M AA1 R JH ER0 IY0
+Lily|L IH1 L IY0
+Virginia|ER0 JH IH1 N Y AH0
 `;
 
 const babyNames = [
@@ -199,6 +213,20 @@ const babyNames = [
   {"name":"Slay","phonemes2":[{"phoneme":"S","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"EY","stress":1}],"syllables":[["S","L","EY"]]},
   {"name":"Sylvia","phonemes2":[{"phoneme":"S","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"V","stress":-1},{"phoneme":"IY","stress":0},{"phoneme":"AH","stress":0}],"syllables":[["S","IH","L"],["V","IY"],["AH"]]},
   {"name":"Vana","phonemes2":[{"phoneme":"V","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["V","AE"],["N","AH"]]},
+  {"name":"Helen","phonemes2":[{"phoneme":"HH","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["HH","EH"],["L","AH","N"]]},
+  {"name":"Leona","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"OW","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["L","IY"],["OW"],["N","AH"]]},
+  {"name":"Nancy","phonemes2":[{"phoneme":"N","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"S","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["N","AE","N"],["S","IY"]]},
+  {"name":"Carol","phonemes2":[{"phoneme":"K","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1}],"syllables":[["K","AE"],["R","AH","L"]]},
+  {"name":"Carole","phonemes2":[{"phoneme":"K","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1}],"syllables":[["K","AE"],["R","AH","L"]]},
+  {"name":"Mary","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["M","EH"],["R","IY"]]},
+  {"name":"Olive","phonemes2":[{"phoneme":"AA","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"V","stress":-1}],"syllables":[["AA"],["L","AH","V"]]},
+  {"name":"Dorothea","phonemes2":[{"phoneme":"D","stress":-1},{"phoneme":"AO","stress":2},{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"TH","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"AH","stress":0}],"syllables":[["D","AO"],["R","AH"],["TH","IY"],["AH"]]},
+  {"name":"Rebecca","phonemes2":[{"phoneme":"R","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"B","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"K","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["R","AH"],["B","EH"],["K","AH"]]},
+  {"name":"Frances","phonemes2":[{"phoneme":"F","stress":-1},{"phoneme":"R","stress":-1},{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"S","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"S","stress":-1}],"syllables":[["F","R","AE","N"],["S","IH","S"]]},
+  {"name":"Ann","phonemes2":[{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1}],"syllables":[["AE","N"]]},
+  {"name":"Marjorie","phonemes2":[{"phoneme":"M","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"JH","stress":-1},{"phoneme":"ER","stress":0},{"phoneme":"IY","stress":0}],"syllables":[["M","AA","R"],["JH","ER"],["IY"]]},
+  {"name":"Lily","phonemes2":[{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["L","IH"],["L","IY"]]},
+  {"name":"Virginia","phonemes2":[{"phoneme":"","stress":-1},{"phoneme":"ER","stress":0},{"phoneme":"JH","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["","ER"],["JH","IH","N"],["Y","AH"]]}
 ];
 
 function getFilteredBabyNameEntries(babyNameEntries) {

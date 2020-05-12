@@ -11,6 +11,8 @@ Bridgette -2
 Brijit -2
 Havoc -2
 Iris -2
+Olive -2
+Ann -2
 Adalace -1
 Bernadette -1
 Genevieve -1
@@ -34,6 +36,13 @@ Madeline 0
 Margot 0
 Marian 0
 Slay 0
+Helen 0
+Nancy 0
+Carol 0
+Carole 0
+Mary 0
+Frances 0
+Lily 0
 Ada 1
 Baxter 1
 Beverly 1
@@ -64,6 +73,7 @@ Phoebe 1
 Rosemary 1
 Skylar 1
 Vana 1
+Marjorie 1
 Aria 2
 Camille 2
 Chandler 2
@@ -73,6 +83,7 @@ Livia 2
 Lydia 2
 Monica 2
 Naomi 2
+Leona 2
 Alana 3
 Alia 3
 Amalia 3
@@ -92,6 +103,9 @@ Melissa 3
 Octavia 3
 Penelope 3
 Sylvia 3
+Dorothea 3
+Rebecca 3
+Virginia 3
 Camilla 4
 Fiona 4
 Sabina 4
