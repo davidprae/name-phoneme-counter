@@ -29,6 +29,8 @@ getBabyNamesWithPopularity(babyNamesWithStats)
     console.log(presentableBabyNames);
     // const babyNamesSortedByMasculinityScore = _.sortBy(presentableBabyNames, (bn) => bn.masculinityScore);
     // const babyNamesSortedByRank = _.sortBy(presentableBabyNames, (bn) => bn.usageStats.rank);
+
+    // Just copy/pasting output from console to the two text file
     // babyNamesSortedByMasculinityScore.map(bn => {
     //   console.log(bn.name, bn.masculinityScore);
     // })
