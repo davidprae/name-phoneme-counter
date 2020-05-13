@@ -26,17 +26,17 @@ function getBabyNamesWithPopularity(babyNames) {
 getBabyNamesWithPopularity(babyNamesWithStats)
   .then(data => {
     const presentableBabyNames = getPresentableBabyNames(data);
-    console.log(presentableBabyNames);
-    // const babyNamesSortedByMasculinityScore = _.sortBy(presentableBabyNames, (bn) => bn.masculinityScore);
-    // const babyNamesSortedByRank = _.sortBy(presentableBabyNames, (bn) => bn.usageStats.rank);
+    // console.log(presentableBabyNames);
+    const babyNamesSortedByMasculinityScore = _.sortBy(presentableBabyNames, (bn) => bn.masculinityScore);
+    const babyNamesSortedByRank = _.sortBy(presentableBabyNames, (bn) => bn.usageStats.rank);
 
     // Just copy/pasting output from console to the two text file
     // babyNamesSortedByMasculinityScore.map(bn => {
     //   console.log(bn.name, bn.masculinityScore);
     // })
-    // babyNamesSortedByRank.map(bn => {
-    //   console.log(bn.name, bn.usageStats.rank);
-    // })
+    babyNamesSortedByRank.map(bn => {
+      console.log(bn.name, bn.usageStats.rank);
+    })
 
   })
   .catch(error => console.warn('getBabyNamesWithPopularity error', error));
