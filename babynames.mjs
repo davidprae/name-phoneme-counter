@@ -114,7 +114,24 @@ const babyNames = [
   {"word":"Ann","phonemes":[{"phoneme":"AE","stress":1},{"phoneme":"N","stress":-1}],"syllables":[["AE","N"]]},
   {"word":"Marjorie","phonemes":[{"phoneme":"M","stress":-1},{"phoneme":"AA","stress":1},{"phoneme":"R","stress":-1},{"phoneme":"JH","stress":-1},{"phoneme":"ER","stress":0},{"phoneme":"IY","stress":0}],"syllables":[["M","AA","R"],["JH","ER"],["IY"]]},
   {"word":"Lily","phonemes":[{"phoneme":"L","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["L","IH"],["L","IY"]]},
-  {"word":"Virginia","phonemes":[{"phoneme":"","stress":-1},{"phoneme":"ER","stress":0},{"phoneme":"JH","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["","ER"],["JH","IH","N"],["Y","AH"]]}
+  {"word":"Virginia","phonemes":[{"phoneme":"","stress":-1},{"phoneme":"ER","stress":0},{"phoneme":"JH","stress":-1},{"phoneme":"IH","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["","ER"],["JH","IH","N"],["Y","AH"]]},
+  {"word":"Grace","phonemes":[{"phoneme":"G","stress":-1},{"phoneme":"R","stress":-1},{"phoneme":"EY","stress":1},{"phoneme":"S","stress":-1}],"syllables":[["G","R","EY","S"]]},
+  {"word":"Chloe","phonemes":[{"phoneme":"K","stress":-1},{"phoneme":"L","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"IY","stress":0}],"syllables":[["K","L","OW"],["IY"]]},
+  {"word":"Rosalie","phonemes":[{"phoneme":"R","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"Z","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["R","OW"],["Z","AH"],["L","IY"]]},
+  {"word":"Leona","phonemes":[{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"OW","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["L","IY"],["OW"],["N","AH"]]},
+  {"word":"Autumn","phonemes":[{"phoneme":"AO","stress":1},{"phoneme":"T","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"M","stress":-1}],"syllables":[["AO"],["T","AH","M"]]},
+  {"word":"Bellamy","phonemes":[{"phoneme":"B","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"M","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["B","EH"],["L","AH"],["M","IY"]]},
+  {"word":"Joni","phonemes":[{"phoneme":"JH","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["JH","OW"],["N","IY"]]},
+  {"word":"Angelique","phonemes":[{"phoneme":"AE","stress":2},{"phoneme":"N","stress":-1},{"phoneme":"JH","stress":-1},{"phoneme":"EH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"K","stress":-1}],"syllables":[["AE","N"],["JH","EH"],["L","IY","K"]]},
+  {"word":"Michalina","phonemes":[{"phoneme":"M","stress":-1},{"phoneme":"AH","stress":2},{"phoneme":"CH","stress":-1},{"phoneme":"AE","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"IY","stress":1},{"phoneme":"N","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["M","AH"],["CH","AE"],["L","IY"],["N","AH"]]},
+  {"word":"Francesca","phonemes":[{"phoneme":"F","stress":-1},{"phoneme":"R","stress":-1},{"phoneme":"AE","stress":0},{"phoneme":"N","stress":-1},{"phoneme":"CH","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"S","stress":-1},{"phoneme":"K","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["F","R","AE","N"],["CH","EH","S"],["K","AH"]]},
+  {"word":"Stella","phonemes":[{"phoneme":"S","stress":-1},{"phoneme":"T","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["S","T","EH"],["L","AH"]]},
+  {"word":"Ruby","phonemes":[{"phoneme":"R","stress":-1},{"phoneme":"UW","stress":1},{"phoneme":"B","stress":-1},{"phoneme":"IY","stress":0}],"syllables":[["R","UW"],["B","IY"]]},
+  {"word":"Bella","phonemes":[{"phoneme":"B","stress":-1},{"phoneme":"EH","stress":1},{"phoneme":"L","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["B","EH"],["L","AH"]]},
+  {"word":"Zoe","phonemes":[{"phoneme":"Z","stress":-1},{"phoneme":"OW","stress":1},{"phoneme":"IY","stress":0}],"syllables":[["Z","OW"],["IY"]]},
+  {"word":"Faith","phonemes":[{"phoneme":"F","stress":-1},{"phoneme":"EY","stress":1},{"phoneme":"TH","stress":-1}],"syllables":[["F","EY","TH"]]},
+  {"word":"Thalia","phonemes":[{"phoneme":"T","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"L","stress":-1},{"phoneme":"Y","stress":-1},{"phoneme":"AH","stress":0}],"syllables":[["T","AH","L"],["Y","AH"]]},
+  {"word":"Addison","phonemes":[{"phoneme":"AE","stress":1},{"phoneme":"D","stress":-1},{"phoneme":"IH","stress":0},{"phoneme":"S","stress":-1},{"phoneme":"AH","stress":0},{"phoneme":"N","stress":-1}],"syllables":[["AE"],["D","IH"],["S","AH","N"]]},
 ];
 
 function getCleanBabyNamesEntries(babyNameEntries) {
