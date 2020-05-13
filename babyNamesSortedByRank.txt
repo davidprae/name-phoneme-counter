@@ -3,19 +3,28 @@ Amelia 8
 Evelyn 9
 Harper 11
 Aria 20
+Grace 21
+Chloe 22
 Penelope 24
 Lily 33
+Addison 34
+Zoe 41
+Stella 42
 Paisley 45
 Skylar 47
+Bella 50
 Maya 61
 Naomi 69
 Alice 70
+Autumn 75
+Ruby 79
 Lydia 85
 Melanie 90
 Isabelle 92
 Julia 93
 Madeline 100
 Delilah 102
+Faith 119
 Bailey 125
 Mary 126
 Rose 141
@@ -28,6 +37,7 @@ Genevieve 184
 Lucia 185
 Alana 213
 Rebecca 216
+Rosalie 236
 Camille 251
 Olive 256
 Ruth 265
@@ -41,6 +51,7 @@ Margot 361
 Daphne 385
 Helen 418
 Sabrina 434
+Francesca 435
 Frances 438
 Rosemary 457
 Celeste 464
@@ -49,6 +60,7 @@ Nia 497
 Virginia 514
 Helena 516
 Matilda 521
+Leona 552
 Leona 552
 Elaine 588
 Octavia 593
@@ -62,6 +74,8 @@ Aurelia 677
 Astrid 714
 Livia 733
 Lina 748
+Thalia 783
+Angelique 798
 Claudia 829
 Joyce 836
 Nancy 878
@@ -69,6 +83,7 @@ Bexley 925
 Marjorie 946
 Antonia 1017
 Ann 1023
+Bellamy 1037
 Chandler 1038
 Ila 1094
 Berkley 1163
@@ -89,6 +104,7 @@ Sabina 2077
 Francis 2358
 Augusta 2620
 Aisley 2676
+Joni 2869
 Dorothea 3544
 Janine 3927
 Liliane 4740
@@ -98,6 +114,7 @@ Clark 6051
 Joplin 6362
 Carole 11780
 Harriett 13125
+Michalina 13556
 Jesalyn 14812
 Kryslyn 17140
 Adalace undefined
