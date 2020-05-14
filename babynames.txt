@@ -146,3 +146,36 @@ Elizabeth  IH0 L IH1 Z AH0 B AH0 TH
 Anna  AE1 N AH0
 Joan  JH OW1 N
 Nova  N OW1 V AH0
+Ellen  EH1 L AH0 N
+Emma  EH1 M AH0
+Audrey  AO1 D R IY0
+Caroline  K EH1 R AH0 L AY2 N
+Nora  N AO1 R AH0
+Charlotte  SH AA1 R L AH0 T
+Claire  K L EH1 R
+Juliette  JH UW0 L IY0 EH1 T
+Jennie  JH EH1 N IY0
+Sophie  S OW1 F IY0
+Eleanor  EH1 L AH0 N AO0 R
+Brittney  B R IH1 T N IY0
+Michelle  M IH0 SH EH1 L
+Leigh  L IY1
+Clover  K L OW1 V ER0
+Ivy  AY1 V IY0
+Jasmine  JH AE1 Z M AH0 N
+Poppy  P AA1 P IY0
+Holly  HH AA1 L IY0
+Tansy  T AE1 N Z IY0
+Daisy  D EY1 Z IY0
+Space  S P EY1 S
+Ariel  EH1 R IY0 AH0 L
+Astra  AE1 S T R AH0
+Aurora  ER0 AO1 R AH0
+Elara  EH1 L AA1 R AH0
+Lyra  L AY1 R AH0
+Pandora  P AE0 N D AO1 R AH0
+Solstice  S AO1 L S T IH0 S
+Cherry  CH EH1 R IY0
+Laurel  L AO1 R AH0 L
+Meadow  M EH1 D OW2
+Tempest  T EH1 M P AH0 S T
