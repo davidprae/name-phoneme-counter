@@ -23,23 +23,25 @@ function getBabyNamesWithPopularity(babyNames) {
   }));
 }
 
-getBabyNamesWithPopularity(babyNamesWithStats)
-  .then(data => {
-    const presentableBabyNames = getPresentableBabyNames(data);
-    // console.log(presentableBabyNames);
-    const babyNamesSortedByMasculinityScore = _.sortBy(presentableBabyNames, (bn) => bn.masculinityScore);
-    const babyNamesSortedByRank = _.sortBy(presentableBabyNames, (bn) => bn.usageStats.rank);
 
-    // Just copy/pasting output from console to the two text file
-    // babyNamesSortedByMasculinityScore.map(bn => {
-    //   console.log(bn.name, bn.masculinityScore);
-    // })
-    babyNamesSortedByRank.map(bn => {
-      console.log(bn.name, bn.usageStats.rank);
-    })
+const babyNamesSortedByMasculinityScore = _.sortBy(babyNamesWithStats, (bn) => bn.masculinityScore);
+babyNamesSortedByMasculinityScore.map(bn => {
+  console.log(bn.name, bn.masculinityScore);
+})
 
-  })
-  .catch(error => console.warn('getBabyNamesWithPopularity error', error));
+// getBabyNamesWithPopularity(babyNamesWithStats)
+//   .then(data => {
+//     // const presentableBabyNames = getPresentableBabyNames(data);
+//     // const babyNamesSortedByRank = _.sortBy(presentableBabyNames, (bn) => bn.usageStats.rank);
+//
+//     // Just copy/pasting output from console to the two text file
+//
+//     // babyNamesSortedByRank.map(bn => {
+//     //   console.log(bn.name, bn.usageStats.rank);
+//     // })
+//
+//   })
+//   .catch(error => console.warn('getBabyNamesWithPopularity error', error));
 
 function getPresentableBabyNames(babyNames) {
   return babyNames.map(babyName => {
